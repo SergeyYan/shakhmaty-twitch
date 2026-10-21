@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Чат делает ход — Twitch Chess</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><a class="brand" href="./index.html"><span class="brand-icon">♞</span> ЧАТ ДЕЛАЕТ ХОД <small>STREAMER vs TWITCH</small></a><span class="header-note">64 клетки. Один стример. Весь чат.</span></header>
+<main>
+<section class="arena">
+ <div class="arena-heading"><div><div class="eyebrow">ШАХМАТЫ С СООБЩЕСТВОМ</div><h1>Твой следующий ход.</h1></div><button id="flip" class="quiet">↻ Развернуть</button></div>
+ <div class="player" id="top-player"><div class="avatar purple">♟</div><div><strong id="top-name">Twitch-чат</strong><span id="top-color">Чёрные фигуры · коллективный разум</span></div><span class="turn-badge" id="top-badge">ОЖИДАНИЕ</span></div>
+ <div class="board-frame"><div id="board" class="board" aria-label="Шахматная доска"></div></div>
+ <div class="player" id="bottom-player"><div class="avatar ivory">♔</div><div><strong id="bottom-name">Стример</strong><span id="bottom-color">Белые фигуры · твой ход</span></div><span class="turn-badge" id="bottom-badge">ОЖИДАНИЕ</span></div>
+ <div class="board-foot"><span><i class="dot"></i> Классические шахматы</span><span>01:00 на каждый ход</span></div>
+</section>
+<aside>
+ <section class="panel connection"><div class="section-label">01 / ПОДКЛЮЧЕНИЕ</div><div class="panel-title"><h2>Twitch на связи</h2><span id="connection-dot" class="status-dot"></span></div><p>Подключи канал перед началом партии.</p>
+ <form id="connect-form"><label for="channel">Название канала</label><div class="input-row"><span>#</span><input id="channel" placeholder="имя_канала" autocomplete="off" maxlength="25" required><button id="connect" type="submit">Подключить</button></div></form>
+ <div id="connection-status" class="subtle" role="status">Чат не подключён</div>
+ <div class="settings"><label for="side">Стример играет</label><select id="side"><option value="w">Белыми · первый ход</option><option value="b">Чёрными · второй ход</option></select></div>
+ <button id="start" class="primary" disabled>Начать партию <span>↗</span></button><button id="demo" class="quiet full">Попробовать без Twitch</button>
+ </section>
+ <section class="panel turn-panel"><div class="section-label">02 / ПАРТИЯ</div><div class="clock-row"><div><h2 id="turn-title">Всё готово к игре</h2><p id="game-status" role="status">Подключи чат или включи пробный режим.</p></div><div id="clock" class="clock">01:00</div></div><div class="timer-track"><div id="timer-bar"></div></div><div id="votes" class="votes"><span class="subtle">Здесь появятся голоса за ходы</span></div><div class="actions"><button id="resign" class="quiet" disabled>Сдаться</button><button id="new-game" class="quiet">Новая партия</button><button id="export" class="quiet">↓ PGN</button></div></section>
+ <section class="panel chat-panel"><div class="section-label">03 / ГОЛОС СООБЩЕСТВА</div><div class="panel-title"><h2>Чат у доски</h2><label class="toggle"><input id="bubbles" type="checkbox" checked> Реплики фигур</label></div><div id="chat-log" class="chat-log" role="log" aria-label="Сообщения чата"><div class="empty-chat">Здесь оживут ваши фигуры.<br><span>Сообщения чата появятся прямо на доске.</span></div></div><form id="demo-form" hidden><input id="demo-user" value="Зритель1" aria-label="Имя тестового зрителя" maxlength="25"><div class="input-row"><input id="demo-message" placeholder="!E7E5 или @e7 Вперёд!" aria-label="Тестовое сообщение" maxlength="300"><button>↵</button></div></form></section>
+</aside>
+<section class="bottom-panel"><div><div class="section-label">КАК ИГРАТЬ</div><h2>Один чат — одна команда.</h2></div><p><code>!E7E5</code> Голос за ход. Один голос на зрителя, можно изменить. Самый популярный ход выполняется через минуту.</p><p><code>@e7 Вперёд!</code> Реплика над фигурой. Без адреса сообщение произнесёт случайная фигура чата.</p><p><code>!E2E1Q</code> Превращение: Q — ферзь, R — ладья, B — слон, N — конь. Без буквы — ферзь.</p></section>
+<section class="history-panel"><div class="section-label">ИСТОРИЯ ПАРТИИ</div><div id="history" class="history">Первый ход ещё впереди.</div></section>
+</main>
+<footer>ЧАТ ДЕЛАЕТ ХОД <span>Рокировка · взятие на проходе · превращение · шах и мат</span></footer>
+<dialog id="promotion"><h2>Превращение пешки</h2><p>Выбери новую фигуру.</p><div id="promotion-options"></div><button id="cancel-promotion" class="quiet">Отмена</button></dialog>
+<script src="vendor/chess.js"></script><script src="game-session.js"></script><script src="twitch-chat.js"></script><script src="piece-art.js"></script><script src="app.js"></script>
+</body></html>

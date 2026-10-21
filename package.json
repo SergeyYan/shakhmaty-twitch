@@ -1,0 +1,1 @@
+{"name":"streamer-vs-twitch-chess","version":"1.0.0","private":true,"scripts":{"start":"node server.cjs","test":"node --test tests/game.test.cjs tests/fast-games.test.cjs","build":"node build.cjs"}}
